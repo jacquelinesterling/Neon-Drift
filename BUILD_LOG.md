@@ -69,7 +69,10 @@ The project is intentionally a static web app. It has no package manager, build 
 
 ### 2026-08-27: User Feedback and Revisions
 
-- Feedback: the first power-up timing felt too slow. Changed the automatic energy threshold to 10 cyan shards and verified the `0 / 10` tracker in a new browser run.
+- Silent unfamiliar-user test: the user played without step-by-step coaching and reported that the game felt boring and disengaging.
+- Revision from that test: added multiple visual hazard types, power-ups, varied colors, moving ships, stars, constellation details, drifting background motes, and a time-of-day cycle.
+- Pacing feedback from the same test: power-ups took too long to arrive. Iterated the automatic threshold from 20 cyan shards to 15, then to 10 after another round of feedback.
+- Verification after the pacing revisions: confirmed the live `0 / 10` tracker and automatic power-up system in a new browser run.
 - Feedback: MAGNET was difficult to notice. Changed it from a larger pickup area to active shard attraction across 260 pixels and added a visible pulsing field around the ship.
 - Feedback: the scene needed more motion. Added moving background ships, then revised them into larger collision hazards after feedback that they looked like decoration.
 - Feedback: the moving ships needed clearer visual identity. Matched them to the neon-green hazard palette and added constellation lines, orbital markers, drifting motes, and a time-of-day cycle.
