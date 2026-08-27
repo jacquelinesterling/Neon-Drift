@@ -9,3 +9,29 @@ Open `index.html` in any modern browser. No build step, server, package manager,
 ## Controls
 
 Use Left/Right Arrow or A/D on desktop. On touch devices, use the on-screen buttons or swipe across the game field.
+
+Collect 15 cyan energy shards to automatically spend them on one five-second power-up:
+
+- **BOOST:** Move faster.
+- **SHIELD:** Absorb one hazard hit.
+- **MAGNET:** Pull nearby energy shards toward the ship.
+
+The active power-up and remaining time appear in the upper-right of the game field.
+
+## Publish a Public URL with GitHub Pages
+
+The game is already uploaded to the [Neon-Drift GitHub repository](https://github.com/jacquelinesterling/Neon-Drift).
+
+1. Sign in to GitHub and open the repository.
+2. Select **Settings** in the repository navigation.
+3. Select **Pages** under **Code and automation**.
+4. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+5. Set the branch to **`main`** and the folder to **`/ (root)`**.
+6. Select **Save**.
+7. Wait one to three minutes for GitHub to publish the site.
+
+The public game URL is:
+
+<https://jacquelinesterling.github.io/Neon-Drift/>
+
+If the URL shows a 404, check that the repository is public, Pages is using the `main` branch and root folder, and then wait a few more minutes before refreshing.

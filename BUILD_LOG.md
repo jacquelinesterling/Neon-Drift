@@ -37,6 +37,10 @@ The project is intentionally a static web app. It has no package manager, build 
 - Added persistent best-score storage through `localStorage` using the `neon-drift-best` key.
 - Added score formatting with six-digit zero padding for the HUD.
 - Added run-end messages that reflect the player’s result.
+- Added energy spending: every 15 collected cyan shards automatically activates one power-up.
+- Added three self-explanatory power-ups: BOOST increases movement speed, SHIELD absorbs one hazard hit, and MAGNET pulls nearby shards toward the ship.
+- Added a visible power-up label and countdown; every effect lasts exactly five seconds.
+- Added power-up reset behavior when a new run begins.
 
 ### 2026-08-27: Narrative and UX Pass
 
@@ -84,6 +88,10 @@ The project is intentionally a static web app. It has no package manager, build 
 ### `README.md`
 
 - Documents the project purpose, local run instructions, and controls.
+
+### `visuals.js`
+
+- Adds varied hazard silhouettes and the energy-powered BOOST, SHIELD, and MAGNET effects.
 
 ### `BUILD_LOG.md`
 
