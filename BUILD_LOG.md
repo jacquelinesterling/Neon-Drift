@@ -33,6 +33,8 @@ The project is intentionally a static web app. It has no package manager, build 
 - Added score progression based on survival time and collected energy.
 - Added collision detection between the ship and hazards.
 - Added horizontal space-traffic ships as additional collision hazards.
+- Enlarged the ship hazards and matched them to the bright neon-red hazard treatment so their game-ending role is clear.
+- Recolored the moving ship hazards neon green and expanded the atmosphere with constellation lines, orbital markers, and drifting background motes.
 - Added a 48-second repeating time-of-day cycle with daylight, sunset, night tinting, and a subtle celestial cue.
 - Added particle effects for ship movement, shard collection, and collisions.
 - Added game reset, start, active-run, and game-over state transitions.

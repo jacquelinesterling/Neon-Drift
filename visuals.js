@@ -80,9 +80,13 @@ let powerupClock = 0;
 let lastPowerupTime = performance.now();
 let stars = [];
 const traffic = [
-  { x: 0.12, y: 0.24, speed: 18, size: 5, color: '#6de7e8' },
-  { x: 0.68, y: 0.42, speed: 27, size: 4, color: '#b8f7dc' },
-  { x: 0.38, y: 0.68, speed: 14, size: 3, color: '#d8f36b' }
+  { x: 0.12, y: 0.24, speed: 18, size: 10, color: '#d8f36b' },
+  { x: 0.68, y: 0.42, speed: 27, size: 8, color: '#d8f36b' },
+  { x: 0.38, y: 0.68, speed: 14, size: 7, color: '#d8f36b' }
+];
+const backgroundNodes = [
+  { x: 0.16, y: 0.18 }, { x: 0.28, y: 0.11 }, { x: 0.42, y: 0.2 },
+  { x: 0.72, y: 0.28 }, { x: 0.82, y: 0.2 }, { x: 0.9, y: 0.34 }
 ];
 
 function trafficPosition(craft) {
@@ -137,11 +141,38 @@ drawBackground = function () {
     context.arc(star.x, y, star.size, 0, Math.PI * 2);
     context.fill();
   });
+  context.strokeStyle = 'rgba(184,247,220,.14)';
+  context.lineWidth = 1;
+  context.beginPath();
+  backgroundNodes.forEach((node, index) => {
+    const x = node.x * width;
+    const y = node.y * height;
+    if (index === 0 || index === 3) context.moveTo(x, y);
+    else context.lineTo(x, y);
+  });
+  context.stroke();
+  context.fillStyle = 'rgba(216,243,107,.2)';
+  backgroundNodes.forEach((node, index) => {
+    if (index !== 0 && index !== 3) return;
+    context.beginPath();
+    context.arc(node.x * width, node.y * height, 2.5, 0, Math.PI * 2);
+    context.fill();
+  });
+  context.fillStyle = 'rgba(109,231,232,.2)';
+  for (let mote = 0; mote < 12; mote += 1) {
+    const x = (mote * 137 + state.elapsed * (4 + mote % 3)) % width;
+    const y = (mote * 79 + state.elapsed * 3) % height;
+    context.fillRect(x, y, 1, 1);
+  }
   traffic.forEach((craft) => {
     const x = trafficPosition(craft);
     const y = craft.y * height;
-    context.globalAlpha = 0.24;
+    context.globalAlpha = 0.86;
     context.fillStyle = craft.color;
+    context.strokeStyle = craft.color;
+    context.shadowBlur = 12;
+    context.shadowColor = craft.color;
+    context.lineWidth = 1.5;
     context.beginPath();
     context.moveTo(x + craft.size * 2, y);
     context.lineTo(x - craft.size, y - craft.size * 0.55);
@@ -149,7 +180,8 @@ drawBackground = function () {
     context.lineTo(x - craft.size, y + craft.size * 0.55);
     context.closePath();
     context.fill();
-    context.fillRect(x - craft.size * 2.4, y - 0.5, craft.size * 0.8, 1);
+    context.stroke();
+    context.fillRect(x - craft.size * 2.8, y - 1, craft.size * 1.2, 2);
   });
   context.restore();
 };
