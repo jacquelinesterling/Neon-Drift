@@ -284,6 +284,12 @@ startGame = function () {
   baseStartGame();
 };
 
+canvas.addEventListener('pointermove', (event) => {
+  if (!state.active || event.pointerType !== 'mouse') return;
+  const rect = canvas.getBoundingClientRect();
+  ship.x = Math.max(26, Math.min(width - 26, event.clientX - rect.left));
+});
+
 const baseUpdateHud = updateHud;
 updateHud = function () {
   baseUpdateHud();

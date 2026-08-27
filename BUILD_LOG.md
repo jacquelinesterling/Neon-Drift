@@ -64,14 +64,24 @@ The project is intentionally a static web app. It has no package manager, build 
 - Verified that the page loads successfully in the integrated browser from the local file URL.
 - Verified that the updated start screen appears in the browser after the objective and story changes.
 - Confirmed that the project requires no install or build step.
-- Checked publishing availability: no git remote or installed hosting/tunnel CLI is available in the workspace, so a public URL requires a GitHub repository or another hosting destination.
+- Published the project to the public GitHub repository and GitHub Pages URL.
+- Verified the public game URL on a phone as a second device: the game loaded and the touch experience was playable.
+
+### 2026-08-27: User Feedback and Revisions
+
+- Feedback: the first power-up timing felt too slow. Changed the automatic energy threshold to 10 cyan shards and verified the `0 / 10` tracker in a new browser run.
+- Feedback: MAGNET was difficult to notice. Changed it from a larger pickup area to active shard attraction across 260 pixels and added a visible pulsing field around the ship.
+- Feedback: the scene needed more motion. Added moving background ships, then revised them into larger collision hazards after feedback that they looked like decoration.
+- Feedback: the moving ships needed clearer visual identity. Matched them to the neon-green hazard palette and added constellation lines, orbital markers, drifting motes, and a time-of-day cycle.
+- Final human verification: played the published game on a phone using swipe movement and confirmed the public URL worked.
+- Feedback: cursor movement works on a computer, arrows work on a computer, and touch plus arrows work on a phone. Added cursor steering and clarified all controls in the start screen and README.
 
 ## File Inventory
 
 ### `index.html`
 
 - Defines the document metadata and page title.
-- Loads `styles.css`, `game.js`, and `story.js`.
+- Loads `styles.css`, `game.js`, `visuals.js`, and `story.js`.
 - Provides the game shell, score HUD, canvas, start screen, story overlay, game-over screen, energy meter, and touch buttons.
 
 ### `styles.css`
@@ -118,13 +128,13 @@ No server, dependency installation, compilation, or asset download is required.
 - Start screen and objective presentation: verified.
 - Story overlay integration: verified.
 - Desktop controls: implemented; manual play verification is recommended after browser changes.
-- Touch controls and swipe steering: implemented; device verification is recommended on a physical touch screen.
+- Touch controls and swipe steering: verified during phone testing.
 - Persistent best score: implemented through browser `localStorage`.
-- Public deployment: not configured.
+- Public deployment: verified at <https://jacquelinesterling.github.io/Neon-Drift/>.
 
 ## Known Constraints
 
-- The game is currently distributed as local static files.
+- The game is distributed as local static files and through GitHub Pages.
 - Best score is stored per browser/device and is not synchronized between players or browsers.
 - There is no automated test suite or CI pipeline.
-- A public playable URL still requires a hosting destination, such as GitHub Pages or another static host.
+- GitHub Pages may take a few minutes to reflect a newly pushed commit because of deployment and browser caching.

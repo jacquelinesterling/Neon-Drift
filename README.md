@@ -8,7 +8,7 @@ Open `index.html` in any modern browser. No build step, server, package manager,
 
 ## Controls
 
-Use Left/Right Arrow or A/D on desktop. On touch devices, use the on-screen buttons or swipe across the game field.
+Use the cursor, Left/Right Arrow, or A/D on a computer. On a phone, use the on-screen arrows or swipe across the game field.
 
 Collect 10 cyan energy shards to automatically spend them on one five-second power-up. Cyan energy is the resource that charges the ship's special abilities:
 
