@@ -141,3 +141,47 @@ No server, dependency installation, compilation, or asset download is required.
 - Best score is stored per browser/device and is not synchronized between players or browsers.
 - There is no automated test suite or CI pipeline.
 - GitHub Pages may take a few minutes to reflect a newly pushed commit because of deployment and browser caching.
+
+## Final Project Snapshot
+
+- Public repository: <https://github.com/jacquelinesterling/Neon-Drift>
+- Public playable URL: <https://jacquelinesterling.github.io/Neon-Drift/>
+- Latest documented revision: `d6928a3`
+- Current power-up threshold: 10 cyan shards.
+- Current power-up duration: 5 seconds.
+- Computer controls: cursor, Left/Right Arrow, or A/D.
+- Phone controls: touch, swipe, or on-screen arrows.
+- Main hazards: falling diamonds, ring mines, star hazards, and moving neon-green ships.
+- World feedback: stars, constellation details, background motes, and a repeating time-of-day cycle.
+
+## Rubric Evidence and Next Improvements
+
+### Working Deployment and Playable Loop
+
+Evidence: the game is deployed through GitHub Pages, was opened from the public URL, and was played on a phone. The complete loop includes launch, movement, collecting, power-up activation, collision, game over, score, best score, and restart.
+
+To strengthen this area, test the public URL while signed out or in a private browser window and record that result. A second-device test is already recorded; adding the exact device and browser would make the evidence more specific.
+
+### Product Clarity and Restraint
+
+Evidence: the start screen states the objective, the bottom HUD shows `current / 10`, the power-up panel shows the name and countdown, and the start screen separates computer controls from phone controls.
+
+To strengthen this area, check the game on a small phone screen and confirm that the additional background elements never compete with hazards or obscure the power-up status.
+
+### Unfamiliar-User Test and Revision
+
+Evidence: the silent user test found the game boring and disengaging. That feedback led to new hazard types, power-ups, color variation, moving ships, stars, constellation details, background motes, and a time-of-day cycle. Follow-up feedback found power-ups too slow, leading to threshold revisions from 20 to 15 to 10. Additional feedback about MAGNET, moving ships, and phone controls produced further verified revisions.
+
+To strengthen this area, record one fresh silent retest after the latest control and visual changes, including what the tester noticed without explanation and whether any confusion remained.
+
+### Agent Workflow and Ownership
+
+Evidence: the build log identifies the purpose of each file, records incremental changes, names the feedback behind revisions, and documents browser and phone verification. Git history provides a sequence of focused commits from initial build through the latest revision.
+
+To strengthen this area, prepare a short explanation of the major design choices: why cyan is the resource, why powers last five seconds, why ships are lethal, and why input differs between computer and phone.
+
+### Demonstration and Reflection
+
+Evidence: the public game is ready for a live demo and has a clear sequence to show: launch, movement, cyan collection, automatic power-up, hazard collision, game over, and restart.
+
+To strengthen this area, prepare a concise demo script and reflection. State the failure, diagnosis, change, and result in that order. A transferable lesson from this project is that testing on the actual target device revealed control confusion that desktop testing did not reveal.
