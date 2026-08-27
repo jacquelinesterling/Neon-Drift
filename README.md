@@ -14,7 +14,7 @@ Collect 15 cyan energy shards to automatically spend them on one five-second pow
 
 - **BOOST:** Move faster.
 - **SHIELD:** Absorb one hazard hit.
-- **MAGNET:** Pull nearby energy shards toward the ship.
+- **MAGNET:** Strongly pull nearby energy shards toward the ship.
 
 The active power-up and remaining time appear in the upper-right of the game field.
 

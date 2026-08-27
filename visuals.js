@@ -154,8 +154,36 @@ const baseUpdate = update;
 update = function (delta) {
   const normalSpeed = ship.speed;
   if (activePowerup && activePowerup.name.startsWith('BOOST')) ship.speed = normalSpeed * 1.65;
+  if (activePowerup && activePowerup.name.startsWith('MAGNET')) {
+    state.shards.forEach((shard) => {
+      const differenceX = ship.x - shard.x;
+      const differenceY = ship.y - shard.y;
+      const distance = Math.hypot(differenceX, differenceY);
+      if (distance < 260 && distance > 1) {
+        const pull = Math.min(1, delta * 5);
+        shard.x += differenceX * pull;
+        shard.y += differenceY * pull;
+      }
+    });
+  }
   baseUpdate(delta);
   ship.speed = normalSpeed;
+};
+
+const baseDrawShip = drawShip;
+drawShip = function () {
+  baseDrawShip();
+  if (activePowerup && activePowerup.name.startsWith('MAGNET')) {
+    context.save();
+    context.strokeStyle = 'rgba(109,231,232,.5)';
+    context.shadowBlur = 16;
+    context.shadowColor = '#6de7e8';
+    context.lineWidth = 2;
+    context.beginPath();
+    context.arc(ship.x, ship.y, 84 + Math.sin(state.elapsed * 8) * 8, 0, Math.PI * 2);
+    context.stroke();
+    context.restore();
+  }
 };
 
 const baseStartGame = startGame;
