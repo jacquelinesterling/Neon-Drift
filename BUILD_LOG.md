@@ -41,6 +41,7 @@ The project is intentionally a static web app. It has no package manager, build 
 - Added three self-explanatory power-ups: BOOST increases movement speed, SHIELD absorbs one hazard hit, and MAGNET pulls nearby shards toward the ship.
 - Added a visible power-up label and countdown; every effect lasts exactly five seconds.
 - Added power-up reset behavior when a new run begins.
+- Added a bottom `current / 15` energy tracker and plain-language explanation that cyan energy charges the next five-second ability.
 
 ### 2026-08-27: Narrative and UX Pass
 

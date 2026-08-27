@@ -69,6 +69,7 @@ function drawHazard(hazard) {
 const powerupStatus = document.querySelector('#powerup-status');
 const powerupName = document.querySelector('#powerup-name');
 const powerupTimer = document.querySelector('#powerup-timer');
+const energyGoal = document.querySelector('#energy-count');
 const powerups = [
   { name: 'BOOST: move faster', color: '#d8f36b' },
   { name: 'SHIELD: one free hit', color: '#b8f7dc' },
@@ -164,5 +165,15 @@ startGame = function () {
   powerupStatus.classList.add('is-hidden');
   baseStartGame();
 };
+
+const baseUpdateHud = updateHud;
+updateHud = function () {
+  baseUpdateHud();
+  energyGoal.textContent = `${state.energy} / 15`;
+  energyFill.style.width = `${Math.min(state.energy / 15 * 100, 100)}%`;
+};
+
+energyGoal.textContent = `${state.energy} / 15`;
+energyFill.style.width = `${Math.min(state.energy / 15 * 100, 100)}%`;
 
 updatePowerup();
