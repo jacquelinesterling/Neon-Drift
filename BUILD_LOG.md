@@ -32,17 +32,19 @@ The project is intentionally a static web app. It has no package manager, build 
 - Added energy shard spawning, collection detection, and a visible energy counter and meter.
 - Added score progression based on survival time and collected energy.
 - Added collision detection between the ship and hazards.
+- Added horizontal space-traffic ships as additional collision hazards.
+- Added a 48-second repeating time-of-day cycle with daylight, sunset, night tinting, and a subtle celestial cue.
 - Added particle effects for ship movement, shard collection, and collisions.
 - Added game reset, start, active-run, and game-over state transitions.
 - Added persistent best-score storage through `localStorage` using the `neon-drift-best` key.
 - Added score formatting with six-digit zero padding for the HUD.
 - Added run-end messages that reflect the player’s result.
-- Added energy spending: every 15 collected cyan shards automatically activates one power-up.
+- Added energy spending: every 10 collected cyan shards automatically activates one power-up.
 - Added three self-explanatory power-ups: BOOST increases movement speed, SHIELD absorbs one hazard hit, and MAGNET pulls nearby shards toward the ship.
 - Added a visible power-up label and countdown; every effect lasts exactly five seconds.
 - Strengthened MAGNET with active shard attraction across a 260-pixel radius and a pulsing field around the ship.
 - Added power-up reset behavior when a new run begins.
-- Added a bottom `current / 15` energy tracker and plain-language explanation that cyan energy charges the next five-second ability.
+- Added a bottom `current / 10` energy tracker and plain-language explanation that cyan energy charges the next five-second ability.
 
 ### 2026-08-27: Narrative and UX Pass
 

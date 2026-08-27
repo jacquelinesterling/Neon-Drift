@@ -79,10 +79,47 @@ let activePowerup = null;
 let powerupClock = 0;
 let lastPowerupTime = performance.now();
 let stars = [];
+const traffic = [
+  { x: 0.12, y: 0.24, speed: 18, size: 5, color: '#6de7e8' },
+  { x: 0.68, y: 0.42, speed: 27, size: 4, color: '#b8f7dc' },
+  { x: 0.38, y: 0.68, speed: 14, size: 3, color: '#d8f36b' }
+];
+
+function trafficPosition(craft) {
+  return ((craft.x * width + state.elapsed * craft.speed) % (width + 80)) - 40;
+}
+
+function drawTimeOfDay() {
+  const cycle = state.elapsed % 48;
+  let tint = 'rgba(7,21,28,.08)';
+  let celestial = '#6de7e8';
+  if (cycle >= 12 && cycle < 24) {
+    tint = 'rgba(58,128,142,.18)';
+    celestial = '#d8f36b';
+  } else if (cycle >= 24 && cycle < 36) {
+    tint = 'rgba(188,86,72,.16)';
+    celestial = '#ff8066';
+  } else if (cycle >= 36) {
+    tint = 'rgba(3,9,22,.24)';
+    celestial = '#b8f7dc';
+  }
+  context.save();
+  context.fillStyle = tint;
+  context.fillRect(0, 0, width, height);
+  context.globalAlpha = 0.22;
+  context.fillStyle = celestial;
+  context.shadowBlur = 20;
+  context.shadowColor = celestial;
+  context.beginPath();
+  context.arc(width * 0.82, height * 0.16, 22, 0, Math.PI * 2);
+  context.fill();
+  context.restore();
+}
 
 const baseDrawBackground = drawBackground;
 drawBackground = function () {
   baseDrawBackground();
+  drawTimeOfDay();
   if (stars.length === 0) {
     stars = Array.from({ length: 54 }, (_, index) => ({
       x: (index * 83) % Math.max(width, 1),
@@ -100,6 +137,20 @@ drawBackground = function () {
     context.arc(star.x, y, star.size, 0, Math.PI * 2);
     context.fill();
   });
+  traffic.forEach((craft) => {
+    const x = trafficPosition(craft);
+    const y = craft.y * height;
+    context.globalAlpha = 0.24;
+    context.fillStyle = craft.color;
+    context.beginPath();
+    context.moveTo(x + craft.size * 2, y);
+    context.lineTo(x - craft.size, y - craft.size * 0.55);
+    context.lineTo(x - craft.size * 1.8, y);
+    context.lineTo(x - craft.size, y + craft.size * 0.55);
+    context.closePath();
+    context.fill();
+    context.fillRect(x - craft.size * 2.4, y - 0.5, craft.size * 0.8, 1);
+  });
   context.restore();
 };
 
@@ -116,8 +167,8 @@ function updatePowerup() {
   const now = performance.now();
   const delta = Math.min((now - lastPowerupTime) / 1000, 0.1);
   lastPowerupTime = now;
-  if (state.active && !activePowerup && state.energy >= 15) {
-    state.energy -= 15;
+  if (state.active && !activePowerup && state.energy >= 10) {
+    state.energy -= 10;
     activatePowerup();
     updateHud();
   }
@@ -154,6 +205,13 @@ const baseUpdate = update;
 update = function (delta) {
   const normalSpeed = ship.speed;
   if (activePowerup && activePowerup.name.startsWith('BOOST')) ship.speed = normalSpeed * 1.65;
+  traffic.forEach((craft) => {
+    const x = trafficPosition(craft);
+    const y = craft.y * height;
+    if (Math.abs(ship.x - x) < ship.width / 2 + craft.size * 1.5 && Math.abs(ship.y - y) < ship.height / 2 + craft.size * 0.7) {
+      endGame();
+    }
+  });
   if (activePowerup && activePowerup.name.startsWith('MAGNET')) {
     state.shards.forEach((shard) => {
       const differenceX = ship.x - shard.x;
@@ -197,11 +255,11 @@ startGame = function () {
 const baseUpdateHud = updateHud;
 updateHud = function () {
   baseUpdateHud();
-  energyGoal.textContent = `${state.energy} / 15`;
-  energyFill.style.width = `${Math.min(state.energy / 15 * 100, 100)}%`;
+  energyGoal.textContent = `${state.energy} / 10`;
+  energyFill.style.width = `${Math.min(state.energy / 10 * 100, 100)}%`;
 };
 
-energyGoal.textContent = `${state.energy} / 15`;
-energyFill.style.width = `${Math.min(state.energy / 15 * 100, 100)}%`;
+energyGoal.textContent = `${state.energy} / 10`;
+energyFill.style.width = `${Math.min(state.energy / 10 * 100, 100)}%`;
 
 updatePowerup();
