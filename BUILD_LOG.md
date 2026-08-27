@@ -146,6 +146,7 @@ No server, dependency installation, compilation, or asset download is required.
 
 - Public repository: <https://github.com/jacquelinesterling/Neon-Drift>
 - Public playable URL: <https://jacquelinesterling.github.io/Neon-Drift/>
+- Final share link to submit: <https://jacquelinesterling.github.io/Neon-Drift/>
 - Latest documented revision: `d6928a3`
 - Current power-up threshold: 10 cyan shards.
 - Current power-up duration: 5 seconds.
