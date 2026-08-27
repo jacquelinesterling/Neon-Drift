@@ -74,7 +74,7 @@ The project is intentionally a static web app. It has no package manager, build 
 - Feedback: the scene needed more motion. Added moving background ships, then revised them into larger collision hazards after feedback that they looked like decoration.
 - Feedback: the moving ships needed clearer visual identity. Matched them to the neon-green hazard palette and added constellation lines, orbital markers, drifting motes, and a time-of-day cycle.
 - Final human verification: played the published game on a phone using swipe movement and confirmed the public URL worked.
-- Feedback: cursor movement works on a computer, arrows work on a computer, and touch plus arrows work on a phone. Added cursor steering and clarified all controls in the start screen and README.
+- Feedback: there was confusion with the phone version because its controls differ from the computer version. Confirmed that cursor movement and arrows work on a computer, while touch, swipe, and on-screen arrows work on a phone. Added cursor steering and clarified all controls in the start screen and README.
 
 ## File Inventory
 
